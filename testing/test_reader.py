@@ -245,6 +245,14 @@ class ETownReaderTest(unittest.TestCase):
         l = get_link(self.model.network, '3569')
         self.assertEqual(3, len(l.vertices))
 
+class OverflowingTankReaderTest(unittest.TestCase):
+    def setUp(self) -> None:
+        from testing.base import OverflowingTankModel
+        self.model = OverflowingTankModel()
+    
+    def test_run(self):
+        rpt = self.model.network.run(output=True)
 
+        
 if __name__ == '__main__':
     unittest.main()

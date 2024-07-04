@@ -91,8 +91,8 @@ def lst2xray(lst: list) -> xr.DataArray:
 
     # check for invalid values
     for entry_index, entry in enumerate(lst):
-        new_entry = []
-        for index, item in enumerate(entry):
+        new_entry = [entry[0],]
+        for index, item in enumerate(entry[1:]):
             c = Counter(item)
             if (
                     "+" in c

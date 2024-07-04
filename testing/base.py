@@ -183,7 +183,22 @@ class ETownModel(TestModel):
         super().__init__()
         self.network = Network.read(os.path.join('..', 'examples', 'data', 'ETown.inp'))
 
+class OverflowingTankModel(TestModel):
+    n_junctions = 1
+    n_tanks = 1
+    n_reservoirs = 1
+    n_pipes = 2
+    n_valves = 0
+    n_controls = 0
+    n_pumps = 0
+    n_rules = 0
+    n_curves = 0
+    n_patterns = 0
 
+    def __init__(self):
+        super().__init__()
+        self.network = Network.read(os.path.join('..', 'examples', 'data', 'Overflowing_tank.inp'))
+        
 class PatternCurveModel(TestModel):
     n_junctions = 1
     n_tanks = 1
