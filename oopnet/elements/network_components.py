@@ -181,6 +181,7 @@ class Tank(Node):
     diameter: float = 50.0
     minvolume: float = 0.0
     volumecurve: Optional[Curve] = None
+    overflow: Optional[str] = None
     compartmentvolume: Optional[float] = None
     reactiontank: Optional[float] = None
     mixingmodel: str = "MIXED"  # = Enum('MIXED', '2COMP', 'FIFO', 'LIFO')

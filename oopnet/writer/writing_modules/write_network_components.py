@@ -116,6 +116,10 @@ def write_tanks(network: Network, fid: TextIOWrapper):
             print(t.minvolume, end=" ", file=fid)
         if t.volumecurve is not None:
             print(t.volumecurve.id, end=" ", file=fid)
+        elif t.overflow is not None: # in case the tank is overflowing and needs a placeholder
+            print("*", end=" ", file=fid)    
+        if t.overflow is not None: # Check if the tank is overflowing
+            print(t.overflow, end=" ", file=fid)
         if t.comment is not None:
             print(";", t.comment, end=" ", file=fid)
         print("\n", end=" ", file=fid)

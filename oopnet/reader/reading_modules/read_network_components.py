@@ -139,33 +139,24 @@ class TankFactory(ComponentFactory):
         comment = cls._read_comment(values)
         try:  # Hack to make it receive overflowing tanks
             attr_values = cls._pad_list(values["values"], 8)
-            attr_names = [
-                "id",
-                "elevation",
-                "initlevel",
-                "minlevel",
-                "maxlevel",
-                "diameter",
-                "minvolume",
-                "volumecurve",
-            ]
-            attr_cls = [str, float, float, float, float, float, float, Curve]
+            attr_values.append(None)
             
         except:
             print('Reading tank with overflow')
             attr_values = cls._pad_list(values["values"], 9)
-            attr_names = [
-                "id",
-                "elevation",
-                "initlevel",
-                "minlevel",
-                "maxlevel",
-                "diameter",
-                "minvolume",
-                "volumecurve",
-                "overflow",
-            ]
-            attr_cls = [str, float, float, float, float, float, float, Curve, str]
+            
+        attr_names = [
+            "id",
+            "elevation",
+            "initlevel",
+            "minlevel",
+            "maxlevel",
+            "diameter",
+            "minvolume",
+            "volumecurve",
+            "overflow",
+        ]
+        attr_cls = [str, float, float, float, float, float, float, Curve, str]
         
         attr_dict = cls._create_attr_dict(attr_names, attr_values, attr_cls, network)
         return Tank(**attr_dict, comment=comment)
