@@ -57,7 +57,10 @@ class ComponentFactory(ReadFactory):
                 value = get_pattern(network, value)
                 attr_dict[attr] = value
             elif attr_cls == Curve:
-                value = get_curve(network, value)
+                if value == '*':  # Hack so it takes the positional argument when overflowing tank is given
+                    value = None
+                else:
+                    value = get_curve(network, value)
                 attr_dict[attr] = value
             elif attr_cls == Node:
                 value = get_node(network, value)
